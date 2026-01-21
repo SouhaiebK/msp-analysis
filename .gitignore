@@ -1,0 +1,69 @@
+# Environment
+.env
+.env.local
+.env.*.local
+*.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+venv/
+.venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Docker
+*.log
+
+# Database
+*.db
+*.sqlite3
+
+# Temporary files
+/tmp/
+*.tmp
+*.temp
+
+# Secrets (never commit these)
+**/secrets/
+*.pem
+*.key
+*.crt
+
+# Test artifacts
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+
+# Node (if any frontend added later)
+node_modules/
+npm-debug.log
+
+# Local development
+docker-compose.override.yml
