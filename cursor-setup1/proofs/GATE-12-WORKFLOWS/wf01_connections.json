@@ -1,0 +1,31 @@
+{
+  "Every 15 min": {
+    "main": [
+      [{ "node": "Get Tenants", "type": "main", "index": 0 }]
+    ]
+  },
+  "Get Tenants": {
+    "main": [
+      [{ "node": "Loop Tenants", "type": "main", "index": 0 }]
+    ]
+  },
+  "Loop Tenants": {
+    "main": [
+      [
+        { "node": "Ingest Tickets", "type": "main", "index": 0 },
+        { "node": "Ingest Time", "type": "main", "index": 0 }
+      ],
+      [{ "node": "Done", "type": "main", "index": 0 }]
+    ]
+  },
+  "Ingest Tickets": {
+    "main": [
+      [{ "node": "Loop Tenants", "type": "main", "index": 0 }]
+    ]
+  },
+  "Ingest Time": {
+    "main": [
+      [{ "node": "Loop Tenants", "type": "main", "index": 0 }]
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "data": {
+    "id": "NKCbs5jW7uf4heK4",
+    "name": "WF-01 Orchestrator Ingestion",
+    "active": false,
+    "nodeCount": 6
+  }
+}

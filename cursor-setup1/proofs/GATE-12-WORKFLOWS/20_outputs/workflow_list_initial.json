@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "data": {
+    "workflows": [
+      {
+        "id": "hqPqnKCjL2PFI2PU",
+        "name": "My workflow",
+        "active": false,
+        "isArchived": false,
+        "createdAt": "2026-01-23T20:08:16.700Z",
+        "updatedAt": "2026-01-23T20:20:15.846Z",
+        "tags": [],
+        "nodeCount": 0
+      },
+      {
+        "id": "ZAyw9yVbulZPvoPd",
+        "name": "Test Connexion Cursor",
+        "active": false,
+        "isArchived": false,
+        "createdAt": "2026-01-25T02:41:50.439Z",
+        "updatedAt": "2026-01-25T02:41:50.439Z",
+        "tags": [],
+        "nodeCount": 2
+      }
+    ],
+    "returned": 2,
+    "nextCursor": null,
+    "hasMore": false
+  }
+}

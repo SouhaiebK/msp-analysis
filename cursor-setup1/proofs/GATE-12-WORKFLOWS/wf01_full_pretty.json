@@ -1,0 +1,174 @@
+﻿{
+    "name":  "WF-01 Orchestrator Ingestion",
+    "nodes":  [
+                  {
+                      "id":  "schedule-trigger-1",
+                      "name":  "Every 15 min",
+                      "type":  "n8n-nodes-base.scheduleTrigger",
+                      "typeVersion":  1,
+                      "position":  [
+                                       250,
+                                       300
+                                   ],
+                      "parameters":  {
+                                         "rule":  {
+                                                      "interval":  [
+                                                                       {
+                                                                           "field":  "minutes",
+                                                                           "minutesInterval":  15
+                                                                       }
+                                                                   ]
+                                                  }
+                                     }
+                  },
+                  {
+                      "id":  "http-request-1",
+                      "name":  "Get Tenants",
+                      "type":  "n8n-nodes-base.httpRequest",
+                      "typeVersion":  4,
+                      "position":  [
+                                       450,
+                                       300
+                                   ],
+                      "parameters":  {
+                                         "url":  "http://analytics-api:8000/internal/tenants",
+                                         "options":  {
+
+                                                     }
+                                     }
+                  },
+                  {
+                      "id":  "split-batches-1",
+                      "name":  "Loop Tenants",
+                      "type":  "n8n-nodes-base.splitInBatches",
+                      "typeVersion":  3,
+                      "position":  [
+                                       650,
+                                       300
+                                   ],
+                      "parameters":  {
+                                         "batchSize":  1,
+                                         "options":  {
+
+                                                     }
+                                     }
+                  },
+                  {
+                      "id":  "execute-workflow-1",
+                      "name":  "Ingest Tickets",
+                      "type":  "n8n-nodes-base.executeWorkflow",
+                      "typeVersion":  1,
+                      "position":  [
+                                       850,
+                                       200
+                                   ],
+                      "parameters":  {
+                                         "workflowId":  "jZFWavySR2ODw8C0",
+                                         "options":  {
+
+                                                     }
+                                     }
+                  },
+                  {
+                      "id":  "execute-workflow-2",
+                      "name":  "Ingest Time",
+                      "type":  "n8n-nodes-base.executeWorkflow",
+                      "typeVersion":  1,
+                      "position":  [
+                                       850,
+                                       400
+                                   ],
+                      "parameters":  {
+                                         "workflowId":  "tXU9wCYyU089bLdh",
+                                         "options":  {
+
+                                                     }
+                                     }
+                  },
+                  {
+                      "id":  "noop-1",
+                      "name":  "Done",
+                      "type":  "n8n-nodes-base.noOp",
+                      "typeVersion":  1,
+                      "position":  [
+                                       1050,
+                                       300
+                                   ],
+                      "parameters":  {
+
+                                     }
+                  }
+              ],
+    "connections":  {
+                        "Every 15 min":  {
+                                             "main":  [
+                                                          [
+                                                              {
+                                                                  "node":  "Get Tenants",
+                                                                  "type":  "main",
+                                                                  "index":  0
+                                                              }
+                                                          ]
+                                                      ]
+                                         },
+                        "Get Tenants":  {
+                                            "main":  [
+                                                         [
+                                                             {
+                                                                 "node":  "Loop Tenants",
+                                                                 "type":  "main",
+                                                                 "index":  0
+                                                             }
+                                                         ]
+                                                     ]
+                                        },
+                        "Loop Tenants":  {
+                                             "main":  [
+                                                          [
+                                                              {
+                                                                  "node":  "Ingest Tickets",
+                                                                  "type":  "main",
+                                                                  "index":  0
+                                                              },
+                                                              {
+                                                                  "node":  "Ingest Time",
+                                                                  "type":  "main",
+                                                                  "index":  0
+                                                              }
+                                                          ],
+                                                          [
+                                                              {
+                                                                  "node":  "Done",
+                                                                  "type":  "main",
+                                                                  "index":  0
+                                                              }
+                                                          ]
+                                                      ]
+                                         },
+                        "Ingest Tickets":  {
+                                               "main":  [
+                                                            [
+                                                                {
+                                                                    "node":  "Loop Tenants",
+                                                                    "type":  "main",
+                                                                    "index":  0
+                                                                }
+                                                            ]
+                                                        ]
+                                           },
+                        "Ingest Time":  {
+                                            "main":  [
+                                                         [
+                                                             {
+                                                                 "node":  "Loop Tenants",
+                                                                 "type":  "main",
+                                                                 "index":  0
+                                                             }
+                                                         ]
+                                                     ]
+                                        }
+                    },
+    "settings":  {
+                     "executionOrder":  "v1"
+                 }
+}

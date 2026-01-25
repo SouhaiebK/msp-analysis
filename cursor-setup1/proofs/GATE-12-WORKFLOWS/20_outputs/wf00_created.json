@@ -1,0 +1,10 @@
+{
+  "success": true,
+  "data": {
+    "id": "bkGuLTagD6Bk3Lwn",
+    "name": "WF-00 Global Error Handler",
+    "active": false,
+    "nodeCount": 2
+  },
+  "message": "Workflow \"WF-00 Global Error Handler\" created successfully with ID: bkGuLTagD6Bk3Lwn. Use n8n_get_workflow with mode 'structure' to verify current state."
+}

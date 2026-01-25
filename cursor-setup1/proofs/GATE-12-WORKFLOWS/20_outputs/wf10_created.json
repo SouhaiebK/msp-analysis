@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "data": {
+    "id": "8ds5mUQh9tJPWUKR",
+    "name": "WF-10 Daily KPI Compute",
+    "active": false,
+    "nodeCount": 2
+  }
+}

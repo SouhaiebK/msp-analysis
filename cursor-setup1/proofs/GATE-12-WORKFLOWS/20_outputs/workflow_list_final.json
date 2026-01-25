@@ -1,0 +1,37 @@
+{
+  "success": true,
+  "data": {
+    "workflows": [
+      {
+        "id": "bkGuLTagD6Bk3Lwn",
+        "name": "WF-00 Global Error Handler",
+        "active": false
+      },
+      {
+        "id": "NKCbs5jW7uf4heK4",
+        "name": "WF-01 Orchestrator Ingestion",
+        "active": false
+      },
+      {
+        "id": "jZFWavySR2ODw8C0",
+        "name": "WF-01A Ingest Tickets",
+        "active": false
+      },
+      {
+        "id": "tXU9wCYyU089bLdh",
+        "name": "WF-01B Ingest Time Entries",
+        "active": false
+      },
+      {
+        "id": "8ds5mUQh9tJPWUKR",
+        "name": "WF-10 Daily KPI Compute",
+        "active": false
+      },
+      {
+        "id": "fge3tLFsO5hbBmhA",
+        "name": "WF-20 Export Power BI",
+        "active": false
+      }
+    ]
+  }
+}
