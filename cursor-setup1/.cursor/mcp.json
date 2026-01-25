@@ -1,0 +1,20 @@
+{
+    "mcpServers": {
+      "n8n-mcp": {
+        "command": "cmd",
+        "args": [
+          "/c",
+          "npx",
+          "-y",
+          "n8n-mcp"
+        ],
+        "env": {
+          "MCP_MODE": "stdio",
+          "LOG_LEVEL": "info",
+          "DISABLE_CONSOLE_OUTPUT": "true",
+          "N8N_API_URL": "https://n8n.76.13.98.217.sslip.io",
+          "N8N_API_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwODFlNzEyNy1kNTM3LTRkODQtOTcxNi01ZmZiMGY5ODc0NmYiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwiaWF0IjoxNzY5MjkyODgzLCJleHAiOjE3NzE4MDQ4MDB9.N1OoysSCYazXAQR8_qo9m1Ey3F_23o-hC-3EfvyFjac"
+        }
+      }
+    }
+  }
