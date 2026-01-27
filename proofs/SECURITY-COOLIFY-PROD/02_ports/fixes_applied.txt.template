@@ -1,0 +1,33 @@
+# Template: Fixes appliqués pour ports
+# Documenter toutes les corrections effectuées
+
+## Date: <date>
+
+### Corrections appliquées:
+
+1. **n8n (port 5678)**:
+   - Avant: Exposé sur 0.0.0.0:5678
+   - Action: Modifié compose Coolify pour bind localhost uniquement (127.0.0.1:5678:5678)
+   - OU: Retiré port mapping, utilisation proxy Coolify uniquement
+   - Status: ✓ Corrigé
+
+2. **analytics-api (port 8000)**:
+   - Avant: Exposé sur 0.0.0.0:8000
+   - Action: Retiré port mapping, utilisation proxy Coolify uniquement
+   - Domain Coolify: <nom_domain>
+   - Status: ✓ Corrigé
+
+3. **postgres (port 5432)**:
+   - Avant: Exposé sur 0.0.0.0:5432
+   - Action: Retiré complètement le port mapping (service privé)
+   - Status: ✓ Corrigé
+
+4. **redis (port 6379)**:
+   - Avant: Exposé sur 0.0.0.0:6379
+   - Action: Retiré complètement le port mapping (service privé)
+   - Status: ✓ Corrigé
+
+### Vérification post-fix:
+- Commande: sudo ss -lntp | egrep ':(5678|8000|5432|6379)\b'
+- Résultat: [coller output]
+- Status: ✓ Aucun port privé sur 0.0.0.0

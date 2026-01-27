@@ -1,0 +1,31 @@
+# Template: Test exécutions Schedule Trigger
+# À compléter après avoir testé un workflow avec schedule "every 1 minute"
+
+## Workflow testé: WF-10 (dupliqué avec schedule "every 1 minute")
+
+### Configuration:
+- Workflow ID: <id>
+- Schedule: Every 1 minute
+- Durée test: 5 minutes
+- Date/heure début: <timestamp>
+
+### Exécutions observées dans UI n8n:
+
+| # | Timestamp           | Status  | Duration | Notes
+|---|---------------------|---------|----------|-------
+1  | 2026-01-25 10:00:00 | Success | 2.3s     | Première exécution
+2  | 2026-01-25 10:01:00 | Success | 2.1s     | 
+3  | 2026-01-25 10:02:00 | Success | 2.5s     |
+4  | 2026-01-25 10:03:00 | Success | 2.2s     |
+5  | 2026-01-25 10:04:00 | Success | 2.4s     |
+
+### Résultat:
+- Total exécutions: 5
+- Exécutions réussies: 5
+- Exécutions échouées: 0
+- Intervalle moyen: ~60 secondes (conforme)
+
+### Conclusion:
+✓ Le workflow Schedule Trigger fonctionne correctement
+✓ Les exécutions se déclenchent à l'intervalle configuré
+✓ Aucune erreur observée

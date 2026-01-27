@@ -1,0 +1,18 @@
+{
+  "status": "completed",
+  "updates_applied": [
+    {
+      "workflow": "WF-01A Ingest Tickets",
+      "id": "jZFWavySR2ODw8C0",
+      "update": "URL corrigée pour utiliser query parameter tenant_id={{ $json.id }}",
+      "timestamp": "2026-01-25T04:25:00Z"
+    },
+    {
+      "workflow": "WF-01B Ingest Time Entries",
+      "id": "tXU9wCYyU089bLdh",
+      "update": "URL corrigée pour utiliser query parameter tenant_id={{ $json.id }} et endpoint time_entries (avec underscore)",
+      "timestamp": "2026-01-25T04:25:00Z"
+    }
+  ],
+  "note": "Les workflows utilisent maintenant $json.id car /internal/tenants retourne {id, name, ...} et non {tenant_id, ...}"
+}

@@ -1,0 +1,14 @@
+{
+  "workflow_id": "jZFWavySR2ODw8C0",
+  "workflow_name": "WF-01A Ingest Tickets",
+  "node_updates": {
+    "http-request-1": {
+      "name": "Call Ingest API",
+      "url": "http://analytics-api:8000/internal/ingest/tickets?tenant_id={{ $json.id }}",
+      "method": "POST",
+      "sendBody": false,
+      "note": "Utilise query parameter tenant_id avec $json.id (car /internal/tenants retourne {id, ...})"
+    }
+  },
+  "status": "updated_via_mcp"
+}

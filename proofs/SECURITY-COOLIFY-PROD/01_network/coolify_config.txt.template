@@ -1,0 +1,14 @@
+# Template: Configuration réseau Coolify
+# À compléter après avoir activé "Connect to Predefined Networks"
+
+n8n stack connected to network: <nom_reseau_destination>
+analytics-api stack connected to network: <nom_reseau_destination>
+
+# Date de configuration: <date>
+# Actions effectuées:
+# 1. Stack n8n → Settings → Connect to Predefined Networks → Activé
+# 2. Sélectionné réseau: <nom>
+# 3. Redeploy stack n8n
+# 4. Stack analytics-api → Settings → Connect to Predefined Networks → Activé
+# 5. Sélectionné même réseau: <nom>
+# 6. Redeploy stack analytics-api

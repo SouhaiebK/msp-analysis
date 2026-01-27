@@ -1,0 +1,32 @@
+{
+  "status": "completed",
+  "workflows_updated": [
+    {
+      "id": "NKCbs5jW7uf4heK4",
+      "name": "WF-01 Orchestrator Ingestion",
+      "error_workflow": "bkGuLTagD6Bk3Lwn",
+      "updated_at": "2026-01-25T04:21:42.565Z"
+    },
+    {
+      "id": "jZFWavySR2ODw8C0",
+      "name": "WF-01A Ingest Tickets",
+      "error_workflow": "bkGuLTagD6Bk3Lwn"
+    },
+    {
+      "id": "tXU9wCYyU089bLdh",
+      "name": "WF-01B Ingest Time Entries",
+      "error_workflow": "bkGuLTagD6Bk3Lwn"
+    },
+    {
+      "id": "8ds5mUQh9tJPWUKR",
+      "name": "WF-10 Daily KPI Compute",
+      "error_workflow": "bkGuLTagD6Bk3Lwn"
+    },
+    {
+      "id": "fge3tLFsO5hbBmhA",
+      "name": "WF-20 Export Power BI",
+      "error_workflow": "bkGuLTagD6Bk3Lwn"
+    }
+  ],
+  "method": "n8n_update_partial_workflow with updateSettings operation"
+}

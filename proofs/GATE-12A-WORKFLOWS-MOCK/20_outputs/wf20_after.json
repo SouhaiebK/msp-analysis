@@ -1,0 +1,6 @@
+{
+  "workflow_id": "fge3tLFsO5hbBmhA",
+  "workflow_name": "WF-20 Export Power BI",
+  "version": "after_modification",
+  "note": "Version après modification - itère maintenant sur tous les tenants. Structure identique à WF-10 mais avec endpoint /internal/exports/generate"
+}

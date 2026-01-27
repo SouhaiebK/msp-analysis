@@ -1,0 +1,14 @@
+{
+  "workflow_id": "tXU9wCYyU089bLdh",
+  "workflow_name": "WF-01B Ingest Time Entries",
+  "node_updates": {
+    "http-request-1": {
+      "name": "Call Ingest API",
+      "url": "http://analytics-api:8000/internal/ingest/time_entries?tenant_id={{ $json.id }}",
+      "method": "POST",
+      "sendBody": false,
+      "note": "Utilise query parameter tenant_id avec $json.id et endpoint time_entries (avec underscore)"
+    }
+  },
+  "status": "updated_via_mcp"
+}

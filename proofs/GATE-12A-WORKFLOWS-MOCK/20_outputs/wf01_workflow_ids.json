@@ -1,0 +1,21 @@
+{
+  "workflow_id": "NKCbs5jW7uf4heK4",
+  "workflow_name": "WF-01 Orchestrator Ingestion",
+  "execute_workflow_nodes": [
+    {
+      "node_id": "execute-workflow-1",
+      "node_name": "Ingest Tickets",
+      "workflow_id": "jZFWavySR2ODw8C0",
+      "expected": "jZFWavySR2ODw8C0",
+      "status": "✅ CORRECT"
+    },
+    {
+      "node_id": "execute-workflow-2",
+      "node_name": "Ingest Time",
+      "workflow_id": "tXU9wCYyU089bLdh",
+      "expected": "tXU9wCYyU089bLdh",
+      "status": "✅ CORRECT"
+    }
+  ],
+  "verification_date": "2026-01-25"
+}

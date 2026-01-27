@@ -1,0 +1,16 @@
+# Template: Statut workflows Schedule Trigger
+# À compléter depuis l'UI n8n
+
+Workflow | Saved | Active | Timezone | Interval          | Notes
+---------|-------|--------|----------|-------------------|------------------
+WF-01    | Yes   | Yes    | UTC      | Every 15 min      | Orchestrator Ingestion
+WF-10    | Yes   | Yes    | UTC      | Daily 6h00        | Daily KPI Compute
+WF-20    | Yes   | Yes    | UTC      | Daily 7h30        | Export Power BI
+
+# Vérifications effectuées:
+# - Workflow SAVED: Vérifié dans UI n8n
+# - Workflow ACTIVE: Toggle activé dans UI n8n
+# - Timezone: Visible dans Settings → Timezone (ou env var GENERIC_TIMEZONE)
+# - Interval: Visible dans le node Schedule Trigger
+
+# Si timezone différente de UTC, noter ici et configurer GENERIC_TIMEZONE dans Coolify

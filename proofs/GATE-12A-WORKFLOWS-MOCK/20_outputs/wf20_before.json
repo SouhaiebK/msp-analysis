@@ -1,0 +1,27 @@
+{
+  "workflow_id": "fge3tLFsO5hbBmhA",
+  "workflow_name": "WF-20 Export Power BI",
+  "version": "before_modification",
+  "nodes": [
+    {
+      "id": "schedule-trigger-1",
+      "name": "Daily 7h30",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [250, 300]
+    },
+    {
+      "id": "http-request-1",
+      "name": "Generate Exports",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [450, 300],
+      "url": "http://analytics-api:8000/internal/exports/generate",
+      "method": "POST"
+    }
+  ],
+  "connections": {
+    "Daily 7h30": {
+      "main": [[{"node": "Generate Exports", "type": "main", "index": 0}]]
+    }
+  },
+  "note": "Version avant modification - n'itère pas sur les tenants"
+}

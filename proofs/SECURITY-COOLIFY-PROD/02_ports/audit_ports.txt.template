@@ -1,0 +1,15 @@
+# Template: Audit ports exposés
+# À compléter après analyse de ss_full.txt et docker_ports.txt
+
+Port | Service          | Bind (0.0.0.0 / 127.0.0.1) | Risque | Action requise
+-----|------------------|------------------------------|--------|----------------
+5678 | n8n              | 0.0.0.0 / 127.0.0.1        | HIGH   | Bind localhost uniquement
+8000 | analytics-api    | 0.0.0.0 / 127.0.0.1        | HIGH   | Retirer port ou bind localhost
+5432 | postgres         | 0.0.0.0 / 127.0.0.1        | CRITICAL | Retirer port (privé)
+6379 | redis            | 0.0.0.0 / 127.0.0.1        | CRITICAL | Retirer port (privé)
+
+# Analyse:
+# - Ports sur 0.0.0.0 = accessibles depuis Internet (RISQUE)
+# - Ports sur 127.0.0.1 = accessibles uniquement depuis localhost (ACCEPTABLE si nécessaire)
+# - Services privés (postgres, redis) ne doivent JAMAIS être exposés
+# - Services publics doivent passer par proxy Coolify (domain) et non port direct

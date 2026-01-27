@@ -1,0 +1,9 @@
+# Template: docker ps output
+# Format attendu:
+# NAMES                 IMAGE                    PORTS                    STATUS
+# msp-n8n              n8nio/n8n:latest         127.0.0.1:5678->5678/tcp Up 2 hours
+# msp-analytics-api    msp-analytics-api:latest 0.0.0.0:8000->8000/tcp   Up 2 hours
+# msp-postgres         postgres:16-alpine       0.0.0.0:5432->5432/tcp   Up 2 hours
+# msp-redis            redis:7-alpine           0.0.0.0:6379->6379/tcp   Up 2 hours
+
+# À remplacer par la sortie réelle de: docker ps --format "table {{.Names}}\t{{.Image}}\t{{.Ports}}\t{{.Status}}"

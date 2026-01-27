@@ -1,0 +1,2 @@
+{"tenant_id": "550e8400-e29b-41d4-a716-446655440001", "cw_time_entry_id": "TE-101", "cw_ticket_id": "TKT-101", "member": "tech1@msp.com", "work_type": "Remote Support", "billable": true, "minutes": 60, "notes": "WiFi configuration troubleshooting", "date_worked": "2026-01-21"}
+{"tenant_id": "550e8400-e29b-41d4-a716-446655440001", "cw_time_entry_id": "TE-102", "cw_ticket_id": "TKT-102", "member": "tech2@msp.com", "work_type": "Remote Support", "billable": true, "minutes": 30, "notes": "Adobe Acrobat installation", "date_worked": "2026-01-22"}

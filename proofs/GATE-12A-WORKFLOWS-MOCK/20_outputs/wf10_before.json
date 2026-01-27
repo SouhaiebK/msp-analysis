@@ -1,0 +1,30 @@
+{
+  "workflow_id": "8ds5mUQh9tJPWUKR",
+  "workflow_name": "WF-10 Daily KPI Compute",
+  "version": "before_modification",
+  "nodes": [
+    {
+      "id": "schedule-trigger-1",
+      "name": "Daily 6h00",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [250, 300]
+    },
+    {
+      "id": "http-request-1",
+      "name": "Compute KPIs",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [450, 300],
+      "url": "http://analytics-api:8000/internal/kpi/compute-daily",
+      "method": "POST",
+      "body": {
+        "date": "={{ $now.minus({days: 1}).toFormat('yyyy-MM-dd') }}"
+      }
+    }
+  ],
+  "connections": {
+    "Daily 6h00": {
+      "main": [[{"node": "Compute KPIs", "type": "main", "index": 0}]]
+    }
+  },
+  "note": "Version avant modification - n'itère pas sur les tenants"
+}

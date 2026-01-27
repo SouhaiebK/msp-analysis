@@ -1,0 +1,60 @@
+{
+  "workflow_id": "8ds5mUQh9tJPWUKR",
+  "workflow_name": "WF-10 Daily KPI Compute",
+  "version": "after_modification",
+  "nodes": [
+    {
+      "id": "schedule-trigger-1",
+      "name": "Daily 6h00",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [250, 300]
+    },
+    {
+      "id": "http-request-get-tenants",
+      "name": "Get Tenants",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [450, 300],
+      "url": "http://analytics-api:8000/internal/tenants",
+      "method": "GET"
+    },
+    {
+      "id": "split-batches-1",
+      "name": "Loop Tenants",
+      "type": "n8n-nodes-base.splitInBatches",
+      "position": [650, 300],
+      "batchSize": 1
+    },
+    {
+      "id": "http-request-1",
+      "name": "Compute KPIs",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [850, 300],
+      "url": "http://analytics-api:8000/internal/kpi/compute-daily?tenant_id={{ $json.id }}&date={{ $now.toISODate() }}",
+      "method": "POST"
+    },
+    {
+      "id": "noop-1",
+      "name": "Done",
+      "type": "n8n-nodes-base.noOp",
+      "position": [1050, 300]
+    }
+  ],
+  "connections": {
+    "Daily 6h00": {
+      "main": [[{"node": "Get Tenants", "type": "main", "index": 0}]]
+    },
+    "Get Tenants": {
+      "main": [[{"node": "Loop Tenants", "type": "main", "index": 0}]]
+    },
+    "Loop Tenants": {
+      "main": [
+        [{"node": "Compute KPIs", "type": "main", "index": 0}],
+        [{"node": "Done", "type": "main", "index": 0}]
+      ]
+    },
+    "Compute KPIs": {
+      "main": [[{"node": "Loop Tenants", "type": "main", "index": 0}]]
+    }
+  },
+  "note": "Version après modification - itère maintenant sur tous les tenants"
+}

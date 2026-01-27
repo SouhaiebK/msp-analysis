@@ -1,0 +1,14 @@
+# Ce dossier contiendra les outputs et captures d'écran du déploiement
+
+## Fichiers attendus:
+- network_verification.txt
+- coolify_variables.png
+- coolify_volumes.png
+- migration_output.txt
+- seed_output.txt
+- api_tests.txt
+- n8n_credentials.png
+- wf01_execution.json
+- wf10_execution.json
+- wf20_execution.json
+- db_verification.txt

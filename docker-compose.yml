@@ -45,9 +45,15 @@ services:
       REDIS_URL: redis://:${REDIS_PASSWORD}@redis:6379/1
       JWT_SECRET_KEY: ${JWT_SECRET_KEY}
       JWT_ALGORITHM: HS256
+      SERVICE_TOKEN: ${SERVICE_TOKEN:-change-me-service-token}
+      MOCK_MODE: ${MOCK_MODE:-true}
+      MOCK_DATA_PATH: /app/mock-data
       ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
       SECRETS_MASTER_KEY: ${SECRETS_MASTER_KEY}
       SECRETS_SALT: ${SECRETS_SALT}
+    volumes:
+      - ./mock-data:/app/mock-data:ro
+      - ./analytics-api/exports:/app/exports
     networks:
       - backend   # Communication interne (DB, Redis, n8n)
       - egress    # Appels APIs externes (CW, SmileBack, S1, Graph, Anthropic)

@@ -1,0 +1,15 @@
+# Template: Configuration Coolify stacks
+# À compléter depuis l'UI Coolify
+
+Stack n8n:
+- Destination: <nom_exact_depuis_ui>
+- Docker Network: <nom_exact_depuis_ui>
+
+Stack analytics-api:
+- Destination: <nom_exact_depuis_ui>
+- Docker Network: <nom_exact_depuis_ui>
+
+# Notes:
+# - Le Destination peut être trouvé dans Coolify UI → Destinations
+# - Le Docker Network est visible dans les settings du Destination
+# - Ces 3 infos sont CRITIQUES pour GATE 1
