@@ -1,21 +1,23 @@
 #!/usr/bin/env python3
 """Docker healthcheck script for analytics-api."""
 import sys
-import os
 
 # Add app to path
-sys.path.insert(0, '/app')
+sys.path.insert(0, "/app")
 
-try:
-    from app.config import settings
-    from app.database import engine
-    
-    # Check database connection
-    with engine.connect() as conn:
-        conn.execute("SELECT 1")
-    
-    print("OK")
-    sys.exit(0)
-except Exception as e:
-    print(f"Healthcheck failed: {e}")
-    sys.exit(1)
+def main() -> int:
+    try:
+        from app.database import engine
+
+        # SQLAlchemy 2.x safe call
+        with engine.connect() as conn:
+            conn.exec_driver_sql("SELECT 1")
+
+        print("OK")
+        return 0
+    except Exception as e:
+        print(f"Healthcheck failed: {e}")
+        return 1
+
+if __name__ == "__main__":
+    raise SystemExit(main())
