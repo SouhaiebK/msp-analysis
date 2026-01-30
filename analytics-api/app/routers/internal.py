@@ -9,8 +9,17 @@ from app.auth.dependencies import verify_service_token, get_tenant_from_query
 from app.config import settings
 from pathlib import Path
 import json
+import uuid
 
 router = APIRouter()
+
+
+def _tenant_uuid(tenant_id: str):
+    """Convert tenant_id string to UUID object."""
+    try:
+        return uuid.UUID(str(tenant_id))
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid tenant_id (must be UUID)")
 
 
 @router.get("/tenants")
@@ -38,8 +47,9 @@ async def ingest_tickets(
     _: bool = Depends(verify_service_token)
 ):
     """Ingest tickets from mock data or real API."""
+    tenant_uuid = _tenant_uuid(tenant_id)
     # Verify tenant exists
-    tenant = db.query(Tenant).filter(Tenant.id == tenant_id).first()
+    tenant = db.query(Tenant).filter(Tenant.id == tenant_uuid).first()
     if not tenant:
         raise HTTPException(status_code=404, detail="Tenant not found")
     
@@ -71,7 +81,7 @@ async def ingest_tickets(
     ingested = 0
     for ticket_data in tickets_data:
         ticket = db.query(RawTicket).filter(
-            RawTicket.tenant_id == tenant_id,
+            RawTicket.tenant_id == tenant_uuid,
             RawTicket.cw_ticket_id == ticket_data.get("cw_ticket_id")
         ).first()
         
@@ -82,7 +92,8 @@ async def ingest_tickets(
                     setattr(ticket, key, value)
         else:
             # Create new
-            ticket = RawTicket(tenant_id=tenant_id, **ticket_data)
+            cleaned = {k: v for k, v in ticket_data.items() if k != "tenant_id"}
+            ticket = RawTicket(tenant_id=tenant_uuid, **cleaned)
             db.add(ticket)
         
         ingested += 1
@@ -98,8 +109,9 @@ async def ingest_time_entries(
     _: bool = Depends(verify_service_token)
 ):
     """Ingest time entries from mock data or real API."""
+    tenant_uuid = _tenant_uuid(tenant_id)
     # Verify tenant exists
-    tenant = db.query(Tenant).filter(Tenant.id == tenant_id).first()
+    tenant = db.query(Tenant).filter(Tenant.id == tenant_uuid).first()
     if not tenant:
         raise HTTPException(status_code=404, detail="Tenant not found")
     
@@ -131,7 +143,7 @@ async def ingest_time_entries(
     ingested = 0
     for entry_data in entries_data:
         entry = db.query(RawTimeEntry).filter(
-            RawTimeEntry.tenant_id == tenant_id,
+            RawTimeEntry.tenant_id == tenant_uuid,
             RawTimeEntry.cw_time_entry_id == entry_data.get("cw_time_entry_id")
         ).first()
         
@@ -142,7 +154,8 @@ async def ingest_time_entries(
                     setattr(entry, key, value)
         else:
             # Create new
-            entry = RawTimeEntry(tenant_id=tenant_id, **entry_data)
+            cleaned = {k: v for k, v in entry_data.items() if k != "tenant_id"}
+            entry = RawTimeEntry(tenant_id=tenant_uuid, **cleaned)
             db.add(entry)
         
         ingested += 1
